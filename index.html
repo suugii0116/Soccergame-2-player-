@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Head Soccer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="game-container">
+        <div class="scoreboard">
+            <div class="player-score">
+                <span class="label">PLAYER 1</span>
+                <span id="score1" class="score-value">0</span>
+            </div>
+            <div class="timer" id="timer">01:30</div>
+            <div class="enemy-score">
+                <span id="score2" class="score-value">0</span>
+                <span class="label">PLAYER 2</span>
+            </div>
+        </div>
+        <div class="controls-hint">
+            P1: W/A/D (Move) + Space (Kick) | P2: Arrows (Move) + Enter (Kick)
+        </div>
+        <canvas id="gameCanvas"></canvas>
+        <div id="game-over-screen" class="hidden overlay">
+            <h1 id="winner-text">PLAYER 1 WINS!</h1>
+            <button id="restart-btn">PLAY AGAIN</button>
+        </div>
+        <div id="goal-screen" class="hidden overlay">
+            <h1 class="goal-text">GOAL!</h1>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
