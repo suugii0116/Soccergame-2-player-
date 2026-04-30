@@ -3,12 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neon Head Soccer</title>
+    <title>Neon Head Soccer Multiplayer</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
 </head>
 <body>
-    <div class="game-container">
+    <div id="lobby" class="lobby-container">
+        <h1>NEON SOCCER ONLINE</h1>
+        <div id="host-ui">
+            <p class="lobby-text">Creating room...</p>
+        </div>
+        <div id="join-ui" class="hidden">
+            <p class="lobby-text">Connecting to host...</p>
+        </div>
+    </div>
+
+    <div class="game-container hidden" id="game-wrapper">
         <div class="scoreboard">
             <div class="player-score">
                 <span class="label">PLAYER 1</span>
@@ -21,12 +32,13 @@
             </div>
         </div>
         <div class="controls-hint">
-            P1: W/A/D (Move) + Space (Kick) | P2: Arrows (Move) + Enter (Kick)
+            Controls: W/A/D or Arrows (Move) + Space or Enter (Kick)
         </div>
         <canvas id="gameCanvas"></canvas>
         <div id="game-over-screen" class="hidden overlay">
             <h1 id="winner-text">PLAYER 1 WINS!</h1>
-            <button id="restart-btn">PLAY AGAIN</button>
+            <button id="restart-btn" class="hidden">PLAY AGAIN</button>
+            <p id="guest-waiting-msg" class="hidden" style="color:white; font-size:1.5rem; margin-top:20px;">Waiting for host to restart...</p>
         </div>
         <div id="goal-screen" class="hidden overlay">
             <h1 class="goal-text">GOAL!</h1>
